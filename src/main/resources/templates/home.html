@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  rel="stylesheet" media="screen" />
+    <link rel="stylesheet" th:href="@{/css/css_home.css}">
     <title>Title</title>
 </head>
 <body>
+    <div class="design-container" >
+        <div th:include="fragments/header :: header"></div>
+        <table class="table">
+            <thead class="thead-dark">
+
+            <tr class ="th" >
+                <th scope="col"></th>
+                <th scope="col">Solution</th>
+                <th scope="col">GEM's in Development process</th>
+                <th scope="col">Regianl of Product Deployment</th>
+                <th scope="col">Serve in industries</th>
+                <th scope="col">Model</th>
+                <th scope="col">Commerciallzed status</th>
+                <th scope="col">Primary Benefits(Outstand Selling Points)</th>
+                <th scope="col">Tech Stack</th>
+                <th scope="col">Reference</th>
+                <th scope="col">Status</th>
+                <th scope="col">Duration Of Development</th>
+                <th scope="col">BA/Owner</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="list,status :${listSolution}">
+                <td th:text="${status.index+1}"></td>
+                <td th:text="${list.name}"></td>
+                <select th:field="*{list.role_gem}">
+                    <option th:value="0" ></option>
+                    <option th:value="1" ></option>
+                </select>
+                <td th:text="${list.regional}"></td>
+                <td th:text="${list.serve_industries}"></td>
+                <td th:text="${list.model}"></td>
+                <td th:text="${list.commercialized_status}"></td>
+                <td th:text="${list.primary_benefits}"></td>
+                <td th:text="${list.tech_stack}"></td>
+                <td th:text="${list.reference}"></td>
+                <td th:text="${list.status}"></td>
+                <td th:text="${list.duration_development}"></td>
+            </tr>
+
+
+            </tbody>
+        </table>
+    </div>
 
 </body>
 </html>
