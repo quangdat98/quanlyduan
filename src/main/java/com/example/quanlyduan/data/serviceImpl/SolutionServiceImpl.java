@@ -33,7 +33,7 @@ public class SolutionServiceImpl implements SolutionService {
     }
 
     @Override
-    public Solution findOne(String name) {
+    public List<Solution> findOne(String name) {
         return solutionRepository.findOne(name);
     }
 
@@ -41,5 +41,6 @@ public class SolutionServiceImpl implements SolutionService {
     public Solution findOneById(Integer id) {
         return solutionRepository.getOne(id);
     }
+
 
 }

@@ -9,16 +9,23 @@
 <!--<link rel="stylesheet" th:href="@{/icons/all.min.css}">-->
     <link rel="stylesheet" th:href="@{/css/css_home.css}">
     <title>Title</title>
+
 </head>
 <body>
+<!--<script>
+    var d = $('#index').val();
+    if(d%2 ==0){
+        $('.table td').css('background','#99CCFF');
+    }
+</script>-->
     <div class="design-container" >
         <div th:include="fragments/header :: header"></div>
         <table class="table">
             <thead class="thead-dark">
 
             <tr class ="th" >
-                <th scope="col">STT</th>
-                <th scope="col">Solution</th>
+                <th scope="col" style="">STT</th>
+                <th scope="col" >Solution</th>
                 <th scope="col">GEM's in Development process</th>
                 <th scope="col">Regianl of Product Deployment</th>
                 <th scope="col">Serve in industries</th>
@@ -35,8 +42,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="list,status :${listSolution}">
-                <td th:text="${status.index+1}"></td>
+            <tr th:each="list,status :${solution.pageList}">
+                <td th:text="${status.index+1}" id="index"></td>
                 <td th:text="${list.name}"></td>
                 <td >
                     <!-- IF CUSTOMER IS ANONYMOUS -->
@@ -75,7 +82,43 @@
 
             </tbody>
         </table>
-    </div>
 
+        <ul class="pagination" style="margin-left: 45%" >
+            <li
+                    th:class="${currentIndex == 1}? 'page-item disabled' : 'page-item'">
+                <a class="page-link" th:href="@{/solution}">First</a>
+            </li>
+            <li
+                    th:class="${currentIndex == 1}? 'page-item disabled': 'page-item' ">
+                <a class="page-link" aria-label="Previous"
+                   th:href="@{|${baseUrl}${currentIndex - 1}|}"
+                   title='Go to previous page'><span aria-hidden="true">«</span>
+                    <span class="sr-only">Previous</span></a>
+            </li>
+            <li th:each="item : ${#numbers.sequence(beginIndex,endIndex)}"
+                th:class="${item == currentIndex ? 'page-item active' :'page-item' }">
+                <a class="page-link" th:href="@{|${baseUrl}${item}|}"> <span
+                        th:text='${item}'>1</span>
+                </a>
+            </li>
+            <li
+                    th:class="${currentIndex == totalPageCount}? 'page-item disabled': 'page-item'">
+                <a class="page-link" aria-label="Next"
+                   th:href="@{|${baseUrl}${currentIndex + 1}|}" title='Go to next page'><span
+                        aria-hidden="true">»</span> <span class="sr-only">Next</span></a>
+            </li>
+            <li
+                    th:class="${currentIndex == totalPageCount}? 'page-item disabled':'page-item'">
+                <a class="page-link" th:href="@{|${baseUrl}${totalPageCount}|}">Last</a>
+            </li>
+        </ul>
+
+    </div>
+    <script>
+        var d = document.getElementById('index').value;
+        if(d%2 ==0){
+            $('.table td').css('background','#99CCFF');
+        }
+    </script>
 </body>
 </html>
