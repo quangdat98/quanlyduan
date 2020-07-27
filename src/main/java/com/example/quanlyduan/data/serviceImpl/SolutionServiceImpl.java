@@ -32,4 +32,14 @@ public class SolutionServiceImpl implements SolutionService {
         solutionRepository.deleteById(id);
     }
 
+    @Override
+    public Solution findOne(String name) {
+        return solutionRepository.findOne(name);
+    }
+
+    @Override
+    public Solution findOneById(Integer id) {
+        return solutionRepository.getOne(id);
+    }
+
 }

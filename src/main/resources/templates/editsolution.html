@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  rel="stylesheet" media="screen" />
+    <link rel="stylesheet" th:href="@{/css/css_home.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
+    <title>Title</title>
+    <script type="javascript">
+
+    </script>
+</head>
+<body>
+<div class="design-container" >
+    <div th:include="fragments/header :: header"></div>
+
+    <form th:object="${solutionOne}" th:action="@{/edit}" method="post" >
+        <input type="hidden" th:field="*{id}">
+        <div class="form-row" >
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Name Soluton</label>
+                <input type="text" class="form-control" id="inputEmail4" th:field="*{name}">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Regional of product deployment</label>
+                <input type="text" class="form-control" id="inputPassword4" th:field="*{regional}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputState1">Gem's role in development process</label>
+                <select id="inputState1" class="form-control" th:field="*{role_gem}">
+
+                    <option th:value="0">Partial</option>
+                    <option th:value="1">Entire Soluton</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputCity1">Serve in industries</label>
+                <input type="text" class="form-control" id="inputCity1" th:field="*{serve_industries}">
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="inputZip11">Model</label>
+                <input type="text" class="form-control" id="inputZip11" th:field="*{model}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">Commerciallzed status</label>
+            <input type="text" class="form-control" id="inputAddress" th:field="*{commercialized_status}">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress2">Primary benefits(Outstand selling points)</label>
+            <input type="text" class="form-control" id="inputAddress2" th:field="*{primary_benefits}">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputCity">Tech stack</label>
+                <input type="text" class="form-control" id="inputCity" th:field="*{tech_stack}">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputZip">Reference </label>
+                <input type="text" class="form-control" id="inputZip" th:field="*{reference}">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">Status</label>
+                <select id="inputState" class="form-control" th:field="*{status}">
+
+                    <option th:value="0">not done</option>
+                    <option th:value="1">done</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4a">Duration of development </label>
+                <input type="text" class="form-control" id="inputEmail4a" th:field="*{duration_development}">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEmail4aa">Ba/Owner</label>
+                <select id="inputEmail4aa" class="form-control" th:field="*{owner}">
+                    <option th:each="e :${nameempl}" th:value="${e.username}" th:text="${e.username}"></option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Input</button>
+    </form>
+</div>
+</body>
+</html>

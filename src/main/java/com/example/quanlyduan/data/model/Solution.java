@@ -8,7 +8,6 @@ import javax.persistence.Id;
 @Entity(name = "dbo_solution")
 public class Solution {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
 

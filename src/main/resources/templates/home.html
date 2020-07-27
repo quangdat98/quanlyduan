@@ -5,6 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" th:href="@{/icons/all.min.css}">-->
     <link rel="stylesheet" th:href="@{/css/css_home.css}">
     <title>Title</title>
 </head>
@@ -15,7 +17,7 @@
             <thead class="thead-dark">
 
             <tr class ="th" >
-                <th scope="col"></th>
+                <th scope="col">STT</th>
                 <th scope="col">Solution</th>
                 <th scope="col">GEM's in Development process</th>
                 <th scope="col">Regianl of Product Deployment</th>
@@ -28,16 +30,25 @@
                 <th scope="col">Status</th>
                 <th scope="col">Duration Of Development</th>
                 <th scope="col">BA/Owner</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Edit</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="list,status :${listSolution}">
                 <td th:text="${status.index+1}"></td>
                 <td th:text="${list.name}"></td>
-                <select th:field="*{list.role_gem}">
-                    <option th:value="0" ></option>
-                    <option th:value="1" ></option>
-                </select>
+                <td >
+                    <!-- IF CUSTOMER IS ANONYMOUS -->
+                    <div th:if="${list.role_gem}">
+                        <div>Partial</div>
+                    </div>
+                    <!-- ELSE -->
+                    <div th:unless="${list.role_gem}">
+                        <div>Entire Soluton</div>
+                    </div>
+
+                </td>
                 <td th:text="${list.regional}"></td>
                 <td th:text="${list.serve_industries}"></td>
                 <td th:text="${list.model}"></td>
@@ -45,10 +56,22 @@
                 <td th:text="${list.primary_benefits}"></td>
                 <td th:text="${list.tech_stack}"></td>
                 <td th:text="${list.reference}"></td>
-                <td th:text="${list.status}"></td>
-                <td th:text="${list.duration_development}"></td>
-            </tr>
+                <td>
 
+                    <div th:if="${list.status}">
+                        <div>Not done</div>
+                    </div>
+                    <!-- ELSE -->
+                    <div th:unless="${list.status}">
+                        <div>Done</div>
+                    </div>
+
+                </td>
+                <td th:text="${list.duration_development}"></td>
+                <td th:text="${list.owner}"></td>
+                <td><a th:href="${'/delete/'+ list.id}"><i class="fa fa-trash"></i></a></td>
+                <td><a th:href="${'/edit/'+list.id}"><i class="fa fa-edit"></i></a></td>
+            </tr>
 
             </tbody>
         </table>

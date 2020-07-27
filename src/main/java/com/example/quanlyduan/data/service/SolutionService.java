@@ -11,4 +11,8 @@ public interface SolutionService {
 
     void deleteSolution(Integer id);
 
+    Solution findOne(String name);
+
+    Solution findOneById(Integer id);
+
 }
