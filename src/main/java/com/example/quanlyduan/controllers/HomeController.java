@@ -41,7 +41,15 @@ public class HomeController {
     @GetMapping("/solution")
     public String home(Model model, HttpServletRequest request, RedirectAttributes redirect){
         request.getSession().setAttribute("listSolution",null);
-        return "redirect:/solution/page/1";
+        int number=0;
+        if(request.getSession().getAttribute("pageNumberEdit") == null){
+            number=1;
+        }else{
+            number = (int) request.getSession().getAttribute("pageNumberEdit");
+
+        }
+        System.out.println("day la ---------------"+number);
+        return "redirect:/solution/page/"+number;
     }
 
     @GetMapping("/solution/page/{pageNumber}")
@@ -58,6 +66,7 @@ public class HomeController {
             }
         }
         request.getSession().setAttribute("listSolution", pages);
+        request.getSession().setAttribute("pageNumber",pageNumber);
         int current = pages.getPage() + 1;
         int begin = Math.max(1, current - list.size());
         int end = Math.min(begin + 5, pages.getPageCount());
@@ -79,8 +88,7 @@ public class HomeController {
     @RequestMapping("/delete/{id}")
     public String deleteSolution(Model model, @PathVariable int id){
         solutionService.deleteSolution(id);
-        model.addAttribute("listSolution",solutionService.findAllSoution());
-        return "home";
+        return "redirect:/solution";
     }
 
     //----------------------------- find id
@@ -130,6 +138,7 @@ public class HomeController {
     @PostMapping("/insertnew")
     public String insertnews(@ModelAttribute Solution solution,Model model){
         solutionService.saveSolution(solution);
+        model.addAttribute("mess","thanh cong");
         return "redirect:/";
     }
 
@@ -142,9 +151,13 @@ public class HomeController {
         return "editsolution";
     }
     @PostMapping("/edit")
-    public String edit(@ModelAttribute Solution solution){
+    public String edit(@ModelAttribute Solution solution,HttpServletRequest request){
+
         solutionService.saveSolution(solution);
-        return "redirect:/";
+        int pageNumber= (int) request.getSession().getAttribute("pageNumber");
+        request.getSession().setAttribute("pageNumberEdit",pageNumber);
+        System.out.println(pageNumber+" day la page");
+        return "redirect:/solution";
     }
 
 }

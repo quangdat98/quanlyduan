@@ -22,4 +22,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> findAllName() {
         return employeeRepository.findAll();
     }
+
+    @Override
+    public Employee findOne(int id) {
+        return employeeRepository.findOne(id);
+    }
+
+
+    @Override
+    public Employee employee(Employee employee) {
+        return employeeRepository.save(employee);
+    }
+
+
 }

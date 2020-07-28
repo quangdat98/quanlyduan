@@ -6,39 +6,82 @@
     <meta charset="UTF-8">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  rel="stylesheet" media="screen" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--<link rel="stylesheet" th:href="@{/icons/all.min.css}">-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/up.css}">
+    <script th:src="@{/js/solution.js}"></script>
+    <script type=”text/javascript” src=”http://code.jquery.com/jquery-2.0.3.min.js”></script>
     <link rel="stylesheet" th:href="@{/css/css_home.css}">
     <title>Title</title>
 
+    <style type="text/css">
+        table.table th {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #FFA6A6;
+            background-color: #ADD8E6;
+            color: #ffffff;
+        }
+        table.table tr:hover td {
+            background: #EEEED1;
+        }
+        table.table tr:nth-child(even) td{
+            background-color: #AFEEEE;
+        }
+        table.table td {
+            border-width: 1px;
+            padding: 8px;
+            background-color: #ffffff;
+            line-height: 25px;
+        }
+        table.table tr{
+            height: 70px;
+        }
+    </style>
+    <script th:src="@{/js/jshome.js}"></script>
+    <script>
+        $(document).ready(function(){
+            $("#up").hide();
+        });
+    </script>
 </head>
 <body>
-<!--<script>
-    var d = $('#index').val();
-    if(d%2 ==0){
-        $('.table td').css('background','#99CCFF');
-    }
-</script>-->
+
     <div class="design-container" >
+
         <div th:include="fragments/header :: header"></div>
+
+        <div id="up">
+            <div class = "header">
+                <h4>Are you sure delete!!<span id ="idsu"></span> </h4>
+            </div>
+            <div class ="footer">
+                <button id="deleteOk">OK</button>
+                <button onclick="sup()">Hủy bỏ</button>
+            </div>
+        </div>
+
+
+
+
         <table class="table">
             <thead class="thead-dark">
 
             <tr class ="th" >
-                <th scope="col" style="">STT</th>
-                <th scope="col" >Solution</th>
+                <th scope="col" style="line-height:3;">STT</th>
+                <th scope="col" style="line-height:3;">Solution</th>
                 <th scope="col">GEM's in Development process</th>
                 <th scope="col">Regianl of Product Deployment</th>
                 <th scope="col">Serve in industries</th>
-                <th scope="col">Model</th>
+                <th scope="col" style="line-height:3;">Model</th>
                 <th scope="col">Commerciallzed status</th>
                 <th scope="col">Primary Benefits(Outstand Selling Points)</th>
                 <th scope="col">Tech Stack</th>
-                <th scope="col">Reference</th>
-                <th scope="col">Status</th>
+                <th scope="col" style="line-height:3;">Reference</th>
+                <th scope="col" style="line-height:3;">Status</th>
                 <th scope="col">Duration Of Development</th>
-                <th scope="col">BA/Owner</th>
-                <th scope="col">Delete</th>
-                <th scope="col">Edit</th>
+                <th scope="col" style="line-height:3;">BA/Owner</th>
+                <th scope="col" style="line-height:3;">Delete</th>
+                <th scope="col" style="line-height:3;">Edit</th>
             </tr>
             </thead>
             <tbody>
@@ -76,13 +119,20 @@
                 </td>
                 <td th:text="${list.duration_development}"></td>
                 <td th:text="${list.owner}"></td>
-                <td><a th:href="${'/delete/'+ list.id}"><i class="fa fa-trash"></i></a></td>
+                <!--<td>
+                    <form>
+                        <input type="hidden" th:value="${list.id}" name = "id">
+                        <button type="submit" id="removeId"><i class="fa fa-trash"></i></button>
+                    </form>
+
+                </td>-->
+                <td><a href="#" th:value="${list.id}" th:data-id="${list.id}" class="removeId"><i class="fa fa-trash"></i></a></td>
++
                 <td><a th:href="${'/edit/'+list.id}"><i class="fa fa-edit"></i></a></td>
             </tr>
 
             </tbody>
         </table>
-
         <ul class="pagination" style="margin-left: 45%" >
             <li
                     th:class="${currentIndex == 1}? 'page-item disabled' : 'page-item'">
@@ -114,11 +164,6 @@
         </ul>
 
     </div>
-    <script>
-        var d = document.getElementById('index').value;
-        if(d%2 ==0){
-            $('.table td').css('background','#99CCFF');
-        }
-    </script>
+
 </body>
 </html>

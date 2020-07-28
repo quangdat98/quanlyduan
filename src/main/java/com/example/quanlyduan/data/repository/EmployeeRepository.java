@@ -1,6 +1,5 @@
 package com.example.quanlyduan.data.repository;
 import com.example.quanlyduan.data.model.Employee;
-import com.example.quanlyduan.data.model.Solution;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -11,4 +10,6 @@ import java.util.List;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee,Integer>{
 
+    @Query("select u from dbo_employee u where u.id = :id")
+    Employee findOne(@Param("id") int id);
 }

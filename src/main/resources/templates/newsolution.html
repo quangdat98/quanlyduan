@@ -6,57 +6,38 @@
     <meta charset="UTF-8">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  rel="stylesheet" media="screen" />
     <link rel="stylesheet" th:href="@{/css/css_home.css}">
-
+    <script th:src="@{/js/solution.js}"></script>
     <script type=”text/javascript” src=”http://code.jquery.com/jquery-2.0.3.min.js”></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/up.css}">
     <title>Title</title>
     <style>
-        #up{
-            width: 400px;
-            height: 200px;
-            border: 1px solid black;
-            z-index: 1000;
-            position: fixed;
-            background: wheat;
-            left: 40%;
-        }
-        .header{
-            width: 400px;
-            height: 50px;
-            background:#01A9DB;
-        }
-        .footer{
-            width: 400px;
-            height: 150px;
-            text-align: center;
-        }
-        .footer button{
-            margin-top:10%;
-            width:100px;
-            height:35px;
-            background:#0000FF;
-            color:white;
-        }
 
     </style>
+
+    <script th:src="@{/js/test.js}"></script>
 </head>
 <body>
+
 <div class="design-container" >
     <div th:include="fragments/header :: header"></div>
+
     <div id="up">
         <div class = "header">
+            <h4>Please input not null!!</h4>
         </div>
         <div class ="footer">
-            <h3>Please input not null!!</h3>
+
             <button onclick="sup()">OK</button>
         </div>
     </div>
 
 
-    <form name="register" th:object="${solution}" th:action="@{/insertnew}" method="post" >
+
+    <form name="form1" th:object="${solution}" th:action="@{/insertnew}" method="post" >
         <div class="form-row" >
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Name Soluton</label>
-                <input type="text" class="form-control" id="inputEmail4" th:field="*{name}" name="name">
+                <input type="text" class="form-control" id="inputEmail4" th:field="*{name}" name="text1">
             </div>
             <div class="form-group col-md-6">
                 <label for="inputPassword4">Regional of product deployment</label>
@@ -120,44 +101,13 @@
                 </select>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary" >Input</button>
+        <button type="submit" class="btn btn-primary" id="button1">Input</button>
     </form>
 
 
     <script type=”text/javascript” src=”http://code.jquery.com/jquery-2.0.3.min.js”></script>
     <script th:src="@{/js/solution.js}"></script>
-    <script>
 
-
-        var inputs = document.forms['register'].getElementsByTagName('input');
-        var run_onchange = false;
-        
-        function up() {
-            for(var i=0; i<inputs.length; i++){
-                var value = inputs[i].value;
-                var id = inputs[i].getAttribute('id');
-            }
-        }
-
-
-
-
-        function validate() {
-            var n1 = document.myform.name.value;
-
-            if(n1.value != "") {
-                if(n1.value == n2.value) {
-                    return true;
-                }
-            }
-            $('#up').show();
-            return false;
-        }
-        function sup() {
-            $('#up').hide();
-        }
-
-    </script>
 
 </div>
 </body>

@@ -36,9 +36,9 @@
             <div class="form-group col-md-4">
                 <label for="inputState1">Gem's role in development process</label>
                 <select id="inputState1" class="form-control" th:field="*{role_gem}">
+                    <option th:value="0">Entire Soluton</option>
+                    <option th:value="1">Partial</option>
 
-                    <option th:value="0">Partial</option>
-                    <option th:value="1">Entire Soluton</option>
                 </select>
             </div>
             <div class="form-group col-md-6">
@@ -72,8 +72,8 @@
                 <label for="inputState">Status</label>
                 <select id="inputState" class="form-control" th:field="*{status}">
 
-                    <option th:value="0">not done</option>
-                    <option th:value="1">done</option>
+                    <option th:value="0">Done</option>
+                    <option th:value="1">Not Done</option>
                 </select>
             </div>
         </div>
