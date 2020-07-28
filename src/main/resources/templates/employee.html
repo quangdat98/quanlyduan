@@ -85,7 +85,7 @@
             <td th:text="${list.email}"></td>
             <td th:text="${list.username}"></td>
 
-            <td><a href="#"><i class="fa fa-trash"></i></a></td>
+            <td><a th:href="${'/deleteEm/'+ list.username}"><i class="fa fa-trash"></i></a></td>
 
             <td><a th:href="${'/editemployee/'+list.id}"><i class="fa fa-edit"></i></a></td>
         </tr>

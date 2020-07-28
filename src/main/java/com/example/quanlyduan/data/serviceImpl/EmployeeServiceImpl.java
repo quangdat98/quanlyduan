@@ -34,5 +34,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.save(employee);
     }
 
+    @Override
+    public void deleteEm(String name) {
+        employeeRepository.deleteEm(name);
+    }
+
 
 }

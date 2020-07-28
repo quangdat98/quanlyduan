@@ -10,4 +10,6 @@ public interface EmployeeService {
     Employee findOne(int em);
 
     Employee employee(Employee employee);
+
+    void deleteEm(String name);
 }
