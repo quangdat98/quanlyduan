@@ -24,8 +24,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee findOne(int id) {
-        return employeeRepository.findOne(id);
+    public Employee findOne(String em) {
+        return employeeRepository.findOne(em);
     }
 
 

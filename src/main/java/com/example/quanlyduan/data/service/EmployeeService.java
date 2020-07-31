@@ -7,7 +7,7 @@ import java.util.List;
 public interface EmployeeService {
     List<Employee> findAllName();
 
-    Employee findOne(int em);
+    Employee findOne(String  em);
 
     Employee employee(Employee employee);
 

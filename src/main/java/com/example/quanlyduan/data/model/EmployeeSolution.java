@@ -8,20 +8,19 @@ import javax.persistence.Id;
 @Entity(name = "dbo_employee_solution")
 public class EmployeeSolution {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
 
-    private int employee_id;
+    private String username;
     private int solution_id;
 
-    public EmployeeSolution() {
+    public EmployeeSolution(int id, String username, int solution_id) {
+        this.id = id;
+        this.username = username;
+        this.solution_id = solution_id;
     }
 
-    public EmployeeSolution(int id, int employee_id, int solution_id) {
-        this.id = id;
-        this.employee_id = employee_id;
-        this.solution_id = solution_id;
+    public EmployeeSolution() {
     }
 
     public int getId() {
@@ -32,12 +31,12 @@ public class EmployeeSolution {
         this.id = id;
     }
 
-    public int getEmployee_id() {
-        return employee_id;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmployee_id(int employee_id) {
-        this.employee_id = employee_id;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getSolution_id() {

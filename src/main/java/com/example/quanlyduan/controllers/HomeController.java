@@ -1,8 +1,10 @@
 package com.example.quanlyduan.controllers;
 
 import com.example.quanlyduan.data.model.Employee;
+import com.example.quanlyduan.data.model.EmployeeSolution;
 import com.example.quanlyduan.data.model.Solution;
 import com.example.quanlyduan.data.service.EmployeeService;
+import com.example.quanlyduan.data.service.ProjectService;
 import com.example.quanlyduan.data.service.SolutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
@@ -21,6 +23,7 @@ public class HomeController {
 
     private EmployeeService employeeService;
     private SolutionService solutionService;
+    private ProjectService projectService;
 
     @Autowired
     public void setEmployeeService(EmployeeService employeeService) {
@@ -31,6 +34,9 @@ public class HomeController {
     public void setSolutionService(SolutionService solutionService) {
         this.solutionService = solutionService;
     }
+
+    @Autowired
+    public void setProjectService(ProjectService projectService){this.projectService=projectService;}
 
 
     @RequestMapping("/")
@@ -79,6 +85,7 @@ public class HomeController {
         model.addAttribute("totalPageCount", totalPageCount);
         model.addAttribute("baseUrl", baseUrl);
         model.addAttribute("solution", pages);
+/*        model.addAttribute("employee",projectService.list());*/
         return "home";
     }
 
@@ -123,6 +130,7 @@ public class HomeController {
         model.addAttribute("totalPageCount", totalPageCount);
         model.addAttribute("baseUrl", baseUrl);
         model.addAttribute("solution", pages);
+    /*    model.addAttribute("employee",projectService.findUserNameBySolutionId());*/
         return "home";
     }
 

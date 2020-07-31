@@ -76,7 +76,7 @@ public class EmployeeController {
     //-------------------------------Thêm mới
 
     @RequestMapping("/editemployee/{id}")
-    public String app(@PathVariable int id,Model model){
+    public String app(@PathVariable String id,Model model){
         model.addAttribute("employee",employeeService.findOne(id));
         return "employeeEdit";
     }
@@ -92,5 +92,8 @@ public class EmployeeController {
         employeeService.deleteEm(username);
         return "redirect:/em";
     }
+
+
+
 
 }

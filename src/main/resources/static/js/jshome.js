@@ -11,13 +11,13 @@ else
 
 $(document).ready(function(){
     $("#up").hide();
+    $("#upds").hide();
     $(document).ready(function () {
         $('.removeId').off('click').on('click',function (e) {
             e.preventDefault();
             var id = $(this).data("id");
             $('#deleteOk').val(id);
             $('#up').show();
-
 
         });
 
@@ -27,6 +27,33 @@ $(document).ready(function(){
             $("#up").hide();
         });
     });
+
+    $('tr').dblclick(function(){
+        $('#upds').show();
+        var id = $(this).data("id");
+        var getdata =5;
+
+        $.ajax({
+            url: 'http://localhost:81/getidProject/'+getdata,
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                var data = response;
+                $.each(data,function (i,item) {
+                    alert(item.username);
+
+                });
+
+            },
+            error: function (e) {
+                console.log(e.message);
+            }
+        });
+    })
+    function sup123(){
+        $('#upds').hide();
+    }
+
 });
 
 
@@ -46,4 +73,5 @@ function ok() {
 
 function sup() {
     $("#up").hide();
+    $('#upds').hide();
 }

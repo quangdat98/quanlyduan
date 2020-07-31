@@ -19,20 +19,17 @@
             <form th:object="${employee}" th:action="@{/editEndelete}" method="post">
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="full">Full Name</label>
-                        <input type="text" class="form-control" id="full" th:field="*{fullname}">
+                        <label for="user">UserName</label>
+                        <input type="text" class="form-control" id="user" th:field="*{username}">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="email">Email</label>
                         <input type="text" class="form-control" id="email" th:field="*{email}">
                     </div>
+
                     <div class="form-group col-md-6">
-                        <label for="user">UserName</label>
-                        <input type="text" class="form-control" id="user" th:field="*{username}">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="input11">ID</label>
-                        <input type="text" class="form-control" id="input11" th:field="*{id}" readonly>
+                        <label for="full">Full Name</label>
+                        <input type="text" class="form-control" id="full" th:field="*{fullname}">
                         <div class="form-check mb-2 mr-sm-2">
                             <input class="form-check-input" type="checkbox" id="inlineFormCheck">
                             <label class="form-check-label" for="inlineFormCheck">

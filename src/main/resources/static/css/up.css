@@ -25,3 +25,13 @@
     background:#0000FF;
     color:white;
 }
+#upds{
+    width: 400px;
+    height: 200px;
+    border: 1px solid black;
+    z-index: 1000;
+    position: fixed;
+    background: #AFEEEE;
+    left: 40%;
+}
+

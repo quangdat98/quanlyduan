@@ -9,28 +9,12 @@ import javax.persistence.Id;
 public class Employee {
 
     @Id
-    private int id;
-
     private String username;
+
     private String fullname;
     private String email;
 
     public Employee() {
-    }
-
-    public Employee(int id, String username, String fullname, String email) {
-        this.id = id;
-        this.username = username;
-        this.fullname = fullname;
-        this.email = email;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getUsername() {
@@ -54,6 +38,12 @@ public class Employee {
     }
 
     public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Employee(String username, String fullname, String email) {
+        this.username = username;
+        this.fullname = fullname;
         this.email = email;
     }
 }

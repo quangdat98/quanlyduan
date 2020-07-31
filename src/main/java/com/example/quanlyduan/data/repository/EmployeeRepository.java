@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee,Integer>{
 
-    @Query("select u from dbo_employee u where u.id = :id")
-    Employee findOne(@Param("id") int id);
+    @Query("select u from dbo_employee u where u.username = :name")
+    Employee findOne(@Param("name") String name);
 
 
     @Transactional
