@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  rel="stylesheet" media="screen" />
+    <link rel="stylesheet" th:href="@{/css/css_home.css}">
+    <script th:src="@{/js/solution.js}"></script>
+    <script type=”text/javascript” src=”http://code.jquery.com/jquery-2.0.3.min.js”></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/up.css}">
+    <title>Title</title>
+    <style>
+
+    </style>
+
+    <script th:src="@{/js/test.js}"></script>
+</head>
+<body>
+
+<div class="design-container" >
+    <div th:include="fragments/header :: header"></div>
+
+    <div id="up">
+        <div class = "header">
+            <h4>Please input not null!!</h4>
+        </div>
+        <div class ="footer">
+
+            <button onclick="sup()">OK</button>
+        </div>
+    </div>
+
+
+
+    <form name="form1" th:object="${solution}" th:action="@{/insertnew}" method="post" >
+        <div class="form-row" >
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Name Soluton</label>
+                <input type="text" class="form-control" id="inputEmail4" th:field="*{name}" name="text1">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Regional of product deployment</label>
+                <input type="text" class="form-control" id="inputPassword4" th:field="*{regional}" name="regional">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputState1">Gem's role in development process</label>
+                <select id="inputState1" class="form-control" th:field="*{role_gem}">
+
+                    <option th:value="0">Partial</option>
+                    <option th:value="1">Entire Soluton</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputCity1">Serve in industries</label>
+                <input type="text" class="form-control" id="inputCity1" th:field="*{serve_industries}" name="serve_industries">
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="inputZip11">Model</label>
+                <input type="text" class="form-control" id="inputZip11" th:field="*{model}" name="model">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">Commerciallzed status</label>
+            <input type="text" class="form-control" id="inputAddress" th:field="*{commercialized_status}" name="commercialized_status">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress2">Primary benefits(Outstand selling points)</label>
+            <input type="text" class="form-control" id="inputAddress2" th:field="*{primary_benefits}" name="primary_benefits">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputCity">Tech stack</label>
+                <input type="text" class="form-control" id="inputCity" th:field="*{tech_stack}" name="tech_stack">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputZip">Reference </label>
+                <input type="text" class="form-control" id="inputZip" th:field="*{reference}" name="reference">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">Status</label>
+                <select id="inputState" class="form-control" th:field="*{status}">
+
+                    <option th:value="0">not done</option>
+                    <option th:value="1">done</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4a">Duration of development </label>
+                <input type="text" class="form-control" id="inputEmail4a" th:field="*{duration_development}" name="duration_development">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEmail4aa">Ba/Owner</label>
+                <select id="inputEmail4aa" class="form-control" th:field="*{owner}">
+                    <option th:each="e :${nameempl}" th:value="${e.username}" th:text="${e.username}"></option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="button1">Input</button>
+    </form>
+
+
+    <script type=”text/javascript” src=”http://code.jquery.com/jquery-2.0.3.min.js”></script>
+    <script th:src="@{/js/solution.js}"></script>
+
+
+</div>
+</body>
+</html>

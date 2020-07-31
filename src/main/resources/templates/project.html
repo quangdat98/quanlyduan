@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/up.css}">
+
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <script th:src="@{/js/solution.js}"></script>
+    <script type=”text/javascript” src=”http://code.jquery.com/jquery-2.0.3.min.js”></script>
+    <link rel="stylesheet" th:href="@{/css/css_home.css}">
+    <title>Title</title>
+
+    <style type="text/css">
+        table.table th {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #FFA6A6;
+            background-color: #ADD8E6;
+            color: #ffffff;
+        }
+        table.table tr:hover td {
+            background: #EEEED1;
+        }
+        table.table tr:nth-child(even) td{
+            background-color: #AFEEEE;
+        }
+        table.table td {
+            border-width: 1px;
+            padding: 8px;
+            background-color: #ffffff;
+            line-height: 25px;
+        }
+        table.table tr{
+            height: 70px;
+        }
+    </style>
+    <script th:src="@{/js/jshome.js}"></script>
+    <script>
+        $(document).ready(function(){
+            $("#up").hide();
+        });
+    </script>
+</head>
+<body>
+
+<div class="design-container" >
+
+    <div th:include="fragments/header :: header"></div>
+    <!--      Xoa        -->
+    <div id="up">
+        <div class = "header">
+            <h4>Are you sure delete!!<span id ="idsu"></span> </h4>
+        </div>
+        <div class ="footer">
+            <button id="deleteOk">OK</button>
+            <button onclick="sup()">Hủy bỏ</button>
+        </div>
+    </div>
+    <!--        Hien danh sach      -->
+
+
+    <table class="table">
+        <thead class="thead-dark">
+
+        <tr class ="th" >
+            <th scope="col" style="line-height:3;">STT</th>
+            <th scope="col" style="line-height:3;">ID</th>
+            <th scope="col" style="line-height:3;">User Name</th>
+            <th scope="col" style="line-height:3;">Solution ID</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="list1,status :${list}">
+            <td th:text="${status.index+1}" id="index"></td>
+            <td th:text="${list1.id}"></td>
+            <td th:text="${list1.username}"></td>
+            <td th:text="${list1.getSolution_id()}"></td>
+
+            <td><a th:href="${'/deleteproject/'+list1.id}"><i class="fa fa-trash"></i></a></td>
+            <td><a th:href="${'/editproject/'+list1.id}"><i class="fa fa-edit"></i></a></td>
+        </tr>
+
+        </tbody>
+    </table>
+
+<!--    <ul class="pagination" style="margin-left: 45%" >
+        <li
+                th:class="${currentIndex == 1}? 'page-item disabled' : 'page-item'">
+            <a class="page-link" th:href="@{/solution}">First</a>
+        </li>
+        <li
+                th:class="${currentIndex == 1}? 'page-item disabled': 'page-item' ">
+            <a class="page-link" aria-label="Previous"
+               th:href="@{|${baseUrl}${currentIndex - 1}|}"
+               title='Go to previous page'><span aria-hidden="true">«</span>
+                <span class="sr-only">Previous</span></a>
+        </li>
+        <li th:each="item : ${#numbers.sequence(beginIndex,endIndex)}"
+            th:class="${item == currentIndex ? 'page-item active' :'page-item' }">
+            <a class="page-link" th:href="@{|${baseUrl}${item}|}"> <span
+                    th:text='${item}'>1</span>
+            </a>
+        </li>
+        <li
+                th:class="${currentIndex == totalPageCount}? 'page-item disabled': 'page-item'">
+            <a class="page-link" aria-label="Next"
+               th:href="@{|${baseUrl}${currentIndex + 1}|}" title='Go to next page'><span
+                    aria-hidden="true">»</span> <span class="sr-only">Next</span></a>
+        </li>
+        <li
+                th:class="${currentIndex == totalPageCount}? 'page-item disabled':'page-item'">
+            <a class="page-link" th:href="@{|${baseUrl}${totalPageCount}|}">Last</a>
+        </li>
+    </ul>-->
+
+</div>
+
+</body>
+</html>

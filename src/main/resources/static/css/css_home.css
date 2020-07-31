@@ -1,0 +1,38 @@
+.th{
+    background-color:aqua!important;
+}
+.design-container{
+    margin: 0 auto;
+    padding: 0px;
+    width: 90%;
+}
+.design-container th{
+
+}
+
+
+/*
+
+#up{
+    width: 400px;
+    height: 200px;
+
+    border: 1px solid black;
+}
+.header{
+    width: 400px;
+    height: 50px;
+    background:#01A9DB;
+}
+.footer{
+    width: 400px;
+    height: 150px;
+    text-align: center;
+}
+.footer button{
+    margin-top:10%;
+    width:100px;
+    height:35px;
+    background:#0000FF;
+    color:white;
+}*/
